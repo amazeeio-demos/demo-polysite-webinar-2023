@@ -1,0 +1,20 @@
+uuid: 7948328f-4dde-4bd9-95d1-f3f40e947cb2
+langcode: en
+status: true
+dependencies:
+  module:
+    - custom_module
+  theme:
+    - umami
+id: aioblock
+theme: umami
+region: header
+weight: -9
+provider: null
+plugin: aio_block
+settings:
+  id: aio_block
+  label: 'Aio block'
+  label_display: '0'
+  provider: custom_module
+visibility: {  }

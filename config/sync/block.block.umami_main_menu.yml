@@ -1,4 +1,4 @@
-uuid: 31e94564-cc8a-41e9-b3ac-1c19a3b4ae6a
+uuid: 53c2c1b5-23bf-4edd-ac06-187b6a969db2
 langcode: en
 status: true
 dependencies:
@@ -13,7 +13,7 @@ _core:
 id: umami_main_menu
 theme: umami
 region: header
-weight: -6
+weight: -8
 provider: null
 plugin: 'system_menu_block:main'
 settings:
