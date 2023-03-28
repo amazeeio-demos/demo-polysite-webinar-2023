@@ -1,0 +1,6 @@
+name: demo-polysite-webinar-2023
+recipe: lagoon
+config:
+  flavor: drupal
+  build:
+    - composer install

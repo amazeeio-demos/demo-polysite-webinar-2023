@@ -1,0 +1,78 @@
+{
+    "name": "amazeeioo-demos/demo-polysite-webinar-2023",
+    "description": "Project template for Drupal 9 projects with MariaDB, hosted on Lagoon",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "The Lagoon Authors",
+            "homepage": "https://github.com/uselagoon",
+            "email": "uselagoon@amazee.io"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "amazeeio/drupal_integrations": "0.3.7",
+        "composer/installers": "2.2.0",
+        "cweagans/composer-patches": "1.7.3",
+        "drupal/core-composer-scaffold": "9.5.5",
+        "drupal/core-project-message": "9.5.5",
+        "drupal/core-recommended": "9.5.5",
+        "drupal/lagoon_logs": "2.1.1",
+        "drupal/redis": "1.6.0",
+        "drupal/search_api": "1.28.0",
+        "drupal/search_api_solr": "4.2.10",
+        "drush/drush": "11.5.1",
+        "zaporylie/composer-drupal-optimizations": "1.2.0"
+    },
+    "require-dev": {
+        "drupal/core-dev-pinned": "9.5.5"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config":{
+        "platform": {"php": "8.1.12"},
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "zaporylie/composer-drupal-optimizations": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
+        },
+        "drupal-scaffold": {
+            "allowed-packages": [
+                "amazeeio/drupal_integrations"
+            ],
+            "file-mapping": {
+                "[web-root]/sites/default/all.settings.php": "assets/all.settings.php",
+                "[web-root]/sites/default/redis-unavailable.services.yml": "assets/redis-unavailable.services.yml",
+                "[project-root]/drush/sites/example.site.yml": "assets/example.site.yml"
+            },
+            "locations": {
+                "web-root": "web/"
+            }
+        }
+    }
+}
