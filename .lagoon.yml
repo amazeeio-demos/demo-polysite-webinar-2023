@@ -1,6 +1,6 @@
 docker-compose-yaml: docker-compose.yml
 
-# project: demo-polysite-webinar-2023
+project: demo-poly-2023-ch4-gcp
 
 # The ssh and api settings are needed to configure Lagoon outside of amazeeio.cloud infrastructure
 # ssh: ssh.amazeeio.cloud:32222
