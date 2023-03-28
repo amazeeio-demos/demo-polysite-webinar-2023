@@ -1,10 +1,10 @@
 #!/bin/bash
 
-## PROJECT="demo-poly-2023-ch4-gcp"
-## PROJECT="demo-poly-2023-us2-aws"
-## PROJECT="demo-poly-2023-us3-gcp"
-## PROJECT="demo-poly-2023-de3-aws"
-## PROJECT="demo-poly-2023-fi2-gcp"
+PROJECT="demo-poly-2023-ch4-gcp"
+# PROJECT="demo-poly-2023-us2-aws"
+# PROJECT="demo-poly-2023-us3-gcp"
+# PROJECT="demo-poly-2023-de3-aws"
+# PROJECT="demo-poly-2023-fi2-gcp"
 echo "Project: $PROJECT" 
 
 LAGOON_KEY=`lagoon get project-key -p $PROJECT | tail -n 1` 
