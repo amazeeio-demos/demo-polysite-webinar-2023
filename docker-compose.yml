@@ -97,33 +97,6 @@ services:
     volumes:
       - db:/var/lib/mysql
 
-  solr:
-    build:
-      context: .
-      dockerfile: lagoon/solr.dockerfile
-      args:
-        CLI_IMAGE: *cli-image
-    labels:
-      lagoon.type: solr
-    ports:
-      - "8983" # exposes the port 8983 with a random local port, find it with `docker-compose port solr 8983`
-    environment:
-      << : *default-environment
-    depends_on:
-      - cli # basically just tells docker-compose to build the cli first
-    volumes:
-      - search:/var/solr
-
-  redis:
-    image: uselagoon/redis-6:latest
-    labels:
-      lagoon.type: redis
-    ports:
-      - "6379" # exposes the port 6379 with a random local port, find it with `docker-compose port redis 6379`
-    << : *default-user # uses the defined user from top
-    environment:
-      << : *default-environment
-
 networks:
   amazeeio-network:
     external: true
