@@ -1,0 +1,5 @@
+custom_module.form:
+  title: 'Custom module settings'
+  description: 'Configure settings for the custom module.'
+  route_name: custom_module.form
+  parent: 'system.admin_config_development'

@@ -1,0 +1,10 @@
+custom_module.settings:
+  type: config_object
+  label: 'Region name settings'
+  mapping:
+    custom_module:
+      type: mapping
+      mapping:
+        custom_module_settings:
+          type: text
+          label: 'Region name settings'
