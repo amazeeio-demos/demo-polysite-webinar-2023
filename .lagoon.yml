@@ -17,7 +17,7 @@ tasks:
     - run:
         name: IF no Drupal installed and we are on a main branch, but not of the canary project
         command: |
-            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [[ "$LAGOON_GIT_BRANCH" == "main" ]] && [[ "$LAGOON_PROJECT" != "demo-poly-2023-ch4-gcp" ]]; then
+            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_GIT_BRANCH" == "main" ] && [ "$LAGOON_PROJECT" != "demo-poly-2023-ch4-gcp" ]; then
                 # no drupal installed, sync DB from main branch
 		drush -y archive:restore --files --db ./poly/archive.tar.gz
                 drush -y cr
