@@ -15,15 +15,15 @@ STATUSE="loading..."
 while [ 1 -gt 0 ]; do
   clear
 
-  echo $PROJECTA\t $STATUSA
-  echo $PROJECTB\t $STATUSB
-  echo $PROJECTC\t $STATUSC
-  echo $PROJECTD\t $STATUSD
-  echo $PROJECTE\t $STATUSE
+  echo "$PROJECTA: $STATUSA"
+  echo "$PROJECTB: $STATUSB"
+  echo "$PROJECTC: $STATUSC"
+  echo "$PROJECTD: $STATUSD"
+  echo "$PROJECTE: $STATUSE"
 
-  STATUSA=`lagoon list deployments -p $PROJECTA -e main | head -n 2 | tail -n 1 | awk '{print $4}'`
-  STATUSB=`lagoon list deployments -p $PROJECTB -e main | head -n 2 | tail -n 1 | awk '{print $4}'`
-  STATUSC=`lagoon list deployments -p $PROJECTC -e main | head -n 2 | tail -n 1 | awk '{print $4}'`
-  STATUSD=`lagoon list deployments -p $PROJECTD -e main | head -n 2 | tail -n 1 | awk '{print $4}'`
-  STATUSE=`lagoon list deployments -p $PROJECTE -e main | head -n 2 | tail -n 1 | awk '{print $4}'`
+  STATUSA=`lagoon list deployments -p $PROJECTA -e main | head -n 2 | tail -n 1 | awk '{print "Deployment "$4}'`
+  STATUSB=`lagoon list deployments -p $PROJECTB -e main | head -n 2 | tail -n 1 | awk '{print "Deployment "$4}'`
+  STATUSC=`lagoon list deployments -p $PROJECTC -e main | head -n 2 | tail -n 1 | awk '{print "Deployment "$4}'`
+  STATUSD=`lagoon list deployments -p $PROJECTD -e main | head -n 2 | tail -n 1 | awk '{print "Deployment "$4}'`
+  STATUSE=`lagoon list deployments -p $PROJECTE -e main | head -n 2 | tail -n 1 | awk '{print "Deployment "$4}'`
 done;
