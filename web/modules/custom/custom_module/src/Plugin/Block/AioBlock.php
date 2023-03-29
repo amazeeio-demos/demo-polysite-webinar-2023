@@ -47,14 +47,14 @@ class AioBlock extends BlockBase {
     $flagPath = \Drupal::service('extension.list.module')->getPath('custom_module') . "/flags/";
 
     $flag = "";
-    if(preg_match("/$(\w\w)\d\..amazee\.io$/", $cluster, $MAT)) {
+    if(preg_match("/^(\w\w)\d\..amazee\.io$/", $cluster, $MAT)) {
 	$flag = '<img class="custom-module-flag" src="/' . $flagPath . "/" . $this->flags[$MAT[1]] . '" />';
     } else if($cluster == "local") {
 	$flag = '<img class="custom-module-flag" src="/' . $flagPath . "/" . $this->flags['lo'] . '" />';
     }
 
     $logo = "";
-    if(preg_match("/$(\w\w\d)\..amazee\.io$/", $cluster, $MAT)) {
+    if(preg_match("/^(\w\w\d)\..amazee\.io$/", $cluster, $MAT)) {
 	$logo = '<img class="custom-module-logo" src="/' . $logoPath . "/" . $this->logos[$MAT[1]] . '" />';
     } else if($cluster == "local") {
 	$logo = '<img class="custom-module-logo" src="/' . $logoPath . "/" . $this->logos['dkr'] . '" />';
