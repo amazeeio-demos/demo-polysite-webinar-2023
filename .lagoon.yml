@@ -19,7 +19,7 @@ tasks:
         command: |
             if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_GIT_BRANCH" == "main" ] && [ "$LAGOON_PROJECT" != "demo-poly-2023-ch4-gcp" ]; then
                 # no drupal installed, sync DB from main branch
-		drush -y archive:restore --files --db ./poly/archive.tar.gz
+                drush -y archive:restore --files --db ./poly/archive.tar.gz
                 drush -y cr
             fi
         service: cli
