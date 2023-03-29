@@ -2,6 +2,7 @@
 
 PROJECTA="demo-poly-2023-fi2-gcp"
 PROJECTB="demo-poly-2023-us3-gcp"
+PROJECTC="demo-poly-2023-ch4-gcp"
 
 lagoon --force deploy branch -b main -e main -p $PROJECTA
 echo "Triggered deploy of $PROJECTA"
@@ -11,3 +12,6 @@ lagoon --force deploy branch -b main -e main -p $PROJECTB
 echo "Triggered deploy of $PROJECTB"
 echo ""
 
+lagoon --force deploy branch -b main -e main -p $PROJECTC
+echo "Triggered deploy of $PROJECTC"
+echo ""
