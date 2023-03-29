@@ -1,7 +1,44 @@
 img.custom-module-logo {
-	height: 14px !important;
+	height: 16px !important;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 img.custom-module-flag {
-	height: 14px !important;
+	height: 16px !important;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+img.custom-module-aio-logo {
+	height: 65px !important;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+.aio-info {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid;
+    padding-left: 10px;
+    background-color: #00b6ed;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.aio-info-part {
+	margin-right: 40px;
+}
+
+.aio-info-logo {
+	margin-right: 40px;
+}
+
+.aio-info-part-title {
+  font-weight: bold;
 }

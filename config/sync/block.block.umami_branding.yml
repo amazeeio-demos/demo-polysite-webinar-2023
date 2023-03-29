@@ -1,6 +1,6 @@
 uuid: 3e994c69-8d43-455f-b185-022d692595b0
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - system
@@ -11,7 +11,7 @@ _core:
 id: umami_branding
 theme: umami
 region: header
-weight: -7
+weight: -9
 provider: null
 plugin: system_branding_block
 settings:

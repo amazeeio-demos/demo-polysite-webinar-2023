@@ -60,14 +60,15 @@ class AioBlock extends BlockBase {
 	$logo = '<img class="custom-module-logo" src="/' . $logoPath . "/" . $this->logos['dkr'] . '" />';
     }
 
+    $aio = '<img class="custom-module-aio-logo" src="/' . $logoPath . '/amazee-io-mirantis.svg" />';
     return [
 	    '#attached'=> ['library' => ['custom_module/custom_module']],
-	    '#markup' => '<div>' . 
-	    	"<div><u><b>amazee.io information</b></u></div>" . 
-	    	"<div>Cluster: ".$cluster." $flag $logo</div>" .
-	    	"<div>Project: ".$project."</div>" . 
-		"<div>Environment: ".$environment." (".$environment_type.")</div>" . 
-		"<div>AIO World Version: ".$version."</div>" . 
+	    '#markup' => '<div class="aio-info">' . 
+	    	"<span class='aio-info-logo'>$aio</span>" . 
+	    	"<span class='aio-info-part'><span class='aio-info-part-title'>Cluster:</span> ".$cluster." $flag $logo</span>" .
+	    	"<span class='aio-info-part'><span class='aio-info-part-title'>Project:</span> ".$project."</span>" . 
+		"<span class='aio-info-part'><span class='aio-info-part-title'>Environment:</span> ".$environment." (".$environment_type.")</span>" . 
+		"<span class='aio-info-part'><span class='aio-info-part-title'>AIO World Version:</span> ".$version."</span>" . 
 		"</div>"
     ];
   }

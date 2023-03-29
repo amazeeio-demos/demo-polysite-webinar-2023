@@ -8,7 +8,7 @@ dependencies:
     - umami
 id: aioblock
 theme: umami
-region: header
+region: pre_header
 weight: -9
 provider: null
 plugin: aio_block
