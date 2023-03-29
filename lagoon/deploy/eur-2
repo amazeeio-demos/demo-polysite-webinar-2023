@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PROJECTB="demo-poly-2023-fi2-gcp"
+
+lagoon --force deploy branch -b main -e main -p $PROJECTB
+echo "Triggered deploy of $PROJECTB"
+echo ""

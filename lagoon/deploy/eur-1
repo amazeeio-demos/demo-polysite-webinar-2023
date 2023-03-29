@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PROJECTA="demo-poly-2023-de3-aws"
+
+lagoon --force deploy branch -b main -e main -p $PROJECTA
+echo "Triggered deploy of $PROJECTA"
+echo ""
