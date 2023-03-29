@@ -1,6 +1,6 @@
 docker-compose-yaml: docker-compose.yml
 
-project: demo-poly-2023-ch4-gcp
+project: demo-poly-2023-us2-aws
 
 # The ssh and api settings are needed to configure Lagoon outside of amazeeio.cloud infrastructure
 # ssh: ssh.amazeeio.cloud:32222
@@ -14,6 +14,16 @@ tasks:
 #         service: cli
 
   post-rollout:
+    - run:
+        name: IF no Drupal installed and we are not main branch of the canary project
+        command: |
+            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [[ "$LAGOON_GIT_BRANCH" != "main" ]] && [[ "$LAGOON_PROJECT" != "demo-poly-2023-ch4-gcp" ]]; then
+                # no drupal installed, sync DB from main branch
+		drush -y archive:restore --files --db ./poly/archive.tar.gz
+                drush -y cr
+            fi
+        service: cli
+        shell: bash
     # Enable once config sync has been setup.
     - run:
        name: drush cim
