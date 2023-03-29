@@ -87,13 +87,17 @@ class AioBlock extends BlockBase {
     return [
 	    '#attached'=> ['library' => ['custom_module/custom_module']],
 	    '#markup' => '<div class="aio-info">' . 
-	    	"<span class='aio-info-logo'>$aio</span>" . 
-	    	"<span class='aio-info-part'>$logo ($infra)</span>" .
-	    	"<span class='aio-info-part'>$flag ($region)</span>" .
-	    	"<span class='aio-info-part'><span class='aio-info-part-title'>Project:</span> ".$project."</span>" . 
-		"<span class='aio-info-part'><span class='aio-info-part-title'>Environment:</span> ".$environment." (".$environment_type.")</span>" . 
-		"<span class='aio-info-part'><span class='aio-info-part-title'>Module Version:</span> ".$version."</span>" . 
-		"</div>"
+		"<div class='aio-info-part-modver'>" . 
+	  	  "<span class='aio-info-part'><span class='aio-info-part-title'>Module Version:</span> ".$version."</span>" . 
+		"</div>" . 
+		"<div>" . 
+	    	  "<span class='aio-info-logo'>$aio</span>" . 
+	    	  "<span class='aio-info-part'>$logo ($infra)</span>" .
+	    	  "<span class='aio-info-part'>$flag ($region)</span>" .
+	    	  "<span class='aio-info-part'><span class='aio-info-part-title'>Project:</span> ".$project."</span>" . 
+		  "<span class='aio-info-part'><span class='aio-info-part-title'>Environment:</span> ".$environment." (".$environment_type.")</span>" . 
+		"</div>" . 
+	      "</div>"
     ];
   }
 

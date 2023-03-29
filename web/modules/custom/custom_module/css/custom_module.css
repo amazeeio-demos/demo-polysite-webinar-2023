@@ -32,13 +32,19 @@ img.custom-module-aio-logo {
 }
 
 .aio-info-part {
-	margin-right: 40px;
+	margin-right: 20px;
 }
 
 .aio-info-logo {
-	margin-right: 40px;
+	margin-right: 15px;
 }
 
 .aio-info-part-title {
   font-weight: bold;
+}
+
+.aio-info-part-modver {
+  text-align: right;
+  font-size: 0.75rem;
+  text-decoration: italic;
 }
