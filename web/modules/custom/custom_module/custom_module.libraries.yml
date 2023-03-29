@@ -1,0 +1,5 @@
+custom_module:
+  version: 1.x
+  css:
+    theme:
+      css/custom_module.css: {}
