@@ -92,7 +92,7 @@ class AioBlock extends BlockBase {
 	    	"<span class='aio-info-part'>$flag ($region)</span>" .
 	    	"<span class='aio-info-part'><span class='aio-info-part-title'>Project:</span> ".$project."</span>" . 
 		"<span class='aio-info-part'><span class='aio-info-part-title'>Environment:</span> ".$environment." (".$environment_type.")</span>" . 
-		"<span class='aio-info-part'><span class='aio-info-part-title'>AIO World Version:</span> ".$version."</span>" . 
+		"<span class='aio-info-part'><span class='aio-info-part-title'>Module Version:</span> ".$version."</span>" . 
 		"</div>"
     ];
   }
