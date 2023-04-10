@@ -5,6 +5,7 @@
 ## PROJECT="demo-poly-2023-us3-gcp"
 ## PROJECT="demo-poly-2023-de3-aws"
 ## PROJECT="demo-poly-2023-fi2-gcp"
+## PROJECT="demo-base-poly-2023-uk3-aws"
 echo "Project: $PROJECT" 
 
 LAGOON_KEY=`lagoon get project-key -p $PROJECT | tail -n 1` 
