@@ -15,10 +15,21 @@ tasks:
 
   post-rollout:
     - run:
-        name: IF no Drupal installed and we are on a main branch, but not of the canary project
+        name: IF no Drupal installed and we are on a main branch, but not of the dev project
         command: |
-            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_GIT_BRANCH" == "main" ] && [ "$LAGOON_PROJECT" != "demo-poly-2023-ch4-gcp" ]; then
-                # no drupal installed, sync DB from main branch
+            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_GIT_BRANCH" == "main" ] && [ "$LAGOON_PROJECT" != "demo-base-poly-2023-uk3-aws" ]; then
+                # no drupal installed, sync DB from archive backup
+                drush -y archive:restore --files --db ./poly/archive.tar.gz
+                drush -y cr
+            fi
+        service: cli
+        shell: bash
+  post-rollout:
+    - run:
+        name: IF no Drupal installed and we are on a dev branch
+        command: |
+            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_GIT_BRANCH" == "dev" ]; then
+                # no drupal installed, sync DB from archive backup
                 drush -y archive:restore --files --db ./poly/archive.tar.gz
                 drush -y cr
             fi
