@@ -16,6 +16,7 @@ use Drupal\Core\Block\BlockBase;
 class AioBlock extends BlockBase {
 
   protected $flags = [
+  	'uk' => 'uk.png',
   	'de' => 'de.png',
   	'ch' => 'ch.png',
   	'us' => 'us.png',
@@ -25,6 +26,7 @@ class AioBlock extends BlockBase {
   ];
 
   protected $countries = [
+  	'uk' => 'UK',
   	'de' => 'Germany',
   	'ch' => 'Switzerland',
   	'us' => 'USA',
@@ -34,6 +36,7 @@ class AioBlock extends BlockBase {
   ];
 
   protected $logos = [
+  	'uk3' => 'aws.png',
   	'de3' => 'aws.png',
   	'fi2' => 'gcp.png',
   	'us2' => 'aws.png',
@@ -43,6 +46,7 @@ class AioBlock extends BlockBase {
   ];
 
   protected $providers = [
+  	'uk3' => 'AWS',
   	'de3' => 'AWS',
   	'fi2' => 'GCP',
   	'us2' => 'AWS',
