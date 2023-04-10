@@ -61,7 +61,7 @@ tasks:
     - run:
         name: IF no Drupal installed and we are on a PR branch
         command: |
-            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_BUILD_TYPE" == "pullrequest" ]; then
+            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_PR_BASE_BRANCH" == "dev" ] && [[ $LAGOON_PR_HEAD_BRANCH = feature* ]]; then
                 # no drupal installed, sync DB from archive backup
                 drush -y archive:restore --files --db ./poly/archive.tar.gz
                 drush -y cr
