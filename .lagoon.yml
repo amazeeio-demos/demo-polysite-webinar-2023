@@ -44,6 +44,16 @@ tasks:
             fi
         service: cli
         shell: bash
+    - run:
+        name: IF no Drupal installed and we are on a PR branch
+        command: |
+            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [[ "$LAGOON_BUILD_TYPE" == "pullrequest" ]]; then
+                # no drupal installed, sync DB from archive backup
+                drush -y archive:restore --files --db ./poly/archive.tar.gz
+                drush -y cr
+            fi
+        service: cli
+        shell: bash
     # Enable once config sync has been setup.
     - run:
        name: drush cim
