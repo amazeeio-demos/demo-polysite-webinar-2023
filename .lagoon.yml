@@ -24,7 +24,6 @@ tasks:
             fi
         service: cli
         shell: bash
-  post-rollout:
     - run:
         name: IF no Drupal installed and we are on a dev branch
         command: |
