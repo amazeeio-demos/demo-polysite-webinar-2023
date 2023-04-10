@@ -63,8 +63,8 @@ tasks:
         command: |
             if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_PR_BASE_BRANCH" == "dev" ] && [[ $LAGOON_PR_HEAD_BRANCH = feature* ]]; then
                 # no drupal installed, sync DB and files from archive backup
-                drush sql-sync @${LAGOON_PROJECT}-dev @self -y
-                drush rsync @${LAGOON_PROJECT}-dev:%files @self:%files -y
+                drush sql-sync @lagoon.${LAGOON_PROJECT}-dev @self -y
+                drush rsync @lagoon.${LAGOON_PROJECT}-dev:%files @self:%files -y
             fi
         service: cli
         shell: bash
@@ -83,8 +83,8 @@ tasks:
         command: |
             if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_PR_BASE_BRANCH" == "main" ] && [ $LAGOON_PR_HEAD_BRANCH == "dev" ] && [ "$LAGOON_PROJECT" != "demo-base-poly-2023-uk3-aws" ]; then
                 # no drupal installed, sync DB and files from main
-                drush sql-sync @${LAGOON_PROJECT}-main @self -y
-                drush rsync @${LAGOON_PROJECT}-main:%files @self:%files -y
+                drush sql-sync @lagoon.${LAGOON_PROJECT}-main @self -y
+                drush rsync @lagoon.${LAGOON_PROJECT}-main:%files @self:%files -y
             fi
         service: cli
         shell: bash
