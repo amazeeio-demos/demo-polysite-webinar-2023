@@ -32,7 +32,7 @@ tasks:
         name: IF no Drupal installed and we are on a main branch, but not of the dev project
         command: |
             if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_GIT_BRANCH" == "main" ] && [ "$LAGOON_PROJECT" != "demo-base-poly-2023-uk3-aws" ]; then
-                # no drupal installed, sync DB from archive backup
+                # no drupal installed, Load DB and files from archive backup
                 drush -y archive:restore --files --db ./poly/archive.tar.gz
                 drush -y cr
             fi
@@ -42,7 +42,7 @@ tasks:
         name: IF no Drupal installed and we are on a dev branch
         command: |
             if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_GIT_BRANCH" == "dev" ]; then
-                # no drupal installed, sync DB from archive backup
+                # no drupal installed, Load DB and files from archive backup
                 drush -y archive:restore --files --db ./poly/archive.tar.gz
                 drush -y cr
             fi
@@ -52,19 +52,39 @@ tasks:
         name: IF no Drupal installed and we are on a feature branch
         command: |
             if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [[ $LAGOON_GIT_BRANCH = feature* ]]; then
-                # no drupal installed, sync DB from archive backup
+                # no drupal installed, Load DB and files from archive backup
                 drush -y archive:restore --files --db ./poly/archive.tar.gz
                 drush -y cr
             fi
         service: cli
         shell: bash
     - run:
-        name: IF no Drupal installed and we are on a PR branch
+        name: IF no Drupal installed and we are on a PR branch against dev
         command: |
             if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_PR_BASE_BRANCH" == "dev" ] && [[ $LAGOON_PR_HEAD_BRANCH = feature* ]]; then
-                # no drupal installed, sync DB from archive backup
+                # no drupal installed, sync DB and files from archive backup
+                drush sql-sync @${LAGOON_PROJECT}-dev @self -y
+                drush rsync @${LAGOON_PROJECT}-dev:%files @self:%files -y
+            fi
+        service: cli
+        shell: bash
+    - run:
+        name: IF no Drupal installed and we are on a PR branch against main for the base dev project
+        command: |
+            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_PR_BASE_BRANCH" == "main" ] && [ $LAGOON_PR_HEAD_BRANCH == "dev" ] && [ "$LAGOON_PROJECT" == "demo-base-poly-2023-uk3-aws" ]; then
+                # no drupal installed, Load DB and files from archive backup
                 drush -y archive:restore --files --db ./poly/archive.tar.gz
                 drush -y cr
+            fi
+        service: cli
+        shell: bash
+    - run:
+        name: IF no Drupal installed and we are on a PR branch against main for a production project
+        command: |
+            if tables=$(drush sqlq 'show tables;') && [ -z "$tables" ] && [ "$LAGOON_PR_BASE_BRANCH" == "main" ] && [ $LAGOON_PR_HEAD_BRANCH == "dev" ] && [ "$LAGOON_PROJECT" != "demo-base-poly-2023-uk3-aws" ]; then
+                # no drupal installed, sync DB and files from main
+                drush sql-sync @${LAGOON_PROJECT}-main @self -y
+                drush rsync @${LAGOON_PROJECT}-main:%files @self:%files -y
             fi
         service: cli
         shell: bash
